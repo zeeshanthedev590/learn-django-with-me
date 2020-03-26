@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typed.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<title> welcome to Cybertask.world</title>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><svg class="bi bi-list-check" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M5 11.5a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zm0-4a.5.5 0 01.5-.5h9a.5.5 0 010 1h-9a.5.5 0 01-.5-.5zM3.854 2.146a.5.5 0 010 .708l-1.5 1.5a.5.5 0 01-.708 0l-.5-.5a.5.5 0 11.708-.708L2 3.293l1.146-1.147a.5.5 0 01.708 0zm0 4a.5.5 0 010 .708l-1.5 1.5a.5.5 0 01-.708 0l-.5-.5a.5.5 0 11.708-.708L2 7.293l1.146-1.147a.5.5 0 01.708 0zm0 4a.5.5 0 010 .708l-1.5 1.5a.5.5 0 01-.708 0l-.5-.5a.5.5 0 01.708-.708l.146.147 1.146-1.147a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+      </svg>Cybertask.world </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="#">by zeeshan.co creative creations <span class="sr-only">(current)</span></a>
+        </li>
+        </ul>
+        </nav>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Welcome to Cybertask.world!</strong>This is a magical place for handling your things to do!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <h3><span id="typed"></span></h3>
+
+
+
+<form action="/addTodo/" method="post" class="form-inline">{% csrf_token %}
+  &nbsp; &nbsp; &nbsp; &nbsp;<input type="text"class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="text here..." name="content"/>
+  <input class="btn btn-success" type="submit" value="Add Item"/>
+</form>
+
+<hr>
+<ul type ="none"class="list-group">
+    {% for todo_item in all_items %}
+      <li class="list-group-item list-group-item-action list-group-item-info">&nbsp;{{ todo_item.content }}
+        &nbsp;&nbsp;&nbsp;<form action="/deleteTodo/{{todo_item.id}}/"
+              style="display: inline;"
+              method="post">{% csrf_token %}
+          <input class="btn btn-danger"type="submit" value="Delete Item"/>
+        </form>
+      </li>
+    {% endfor %}
+
+    <!-- <script>
+      var typed = new Typed('#typed',{
+                     strings:["Thanks for using cybertask.world","This is a magical place for handling your things to do!","Made by zeeshan.co creative creations:)",""],
+                     backSpeed: 15,
+                     smartBackspace: true,
+                     backDelay: 1200,
+                     startDelay: 1000,
+                     typeSpeed: 25,
+                     loop: false,
+                     
+                   });
+     </script> -->
